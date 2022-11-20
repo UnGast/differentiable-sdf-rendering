@@ -13,5 +13,7 @@ ENV/
 outputs
 outputs_new
 outputs_old
+outputs*
+scenes/
 venv.bak/
 venv/
