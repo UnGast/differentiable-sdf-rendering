@@ -45,7 +45,7 @@
 	<sensor type="perspective">
 		<float name="fov" value="39"/>
 		<transform name="to_world">
-			<lookat origin="0, 1, 1" target="0.5, 0.0, 0.5" up="0, 1, 0"/>
+			<lookat origin="0, 1, 1" target="0.5, 0.5, 0.5" up="0, 1, 0"/>
 		</transform>
 		<ref id="film"/>
 		<ref id="sampler"/>
