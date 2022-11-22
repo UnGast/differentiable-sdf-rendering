@@ -20,6 +20,7 @@ def load_ref_images(paths, multiscale=False):
     result = []
     for fn in paths:
         bmp = mi.Bitmap(fn)
+        bmp = bmp.convert(component_format=mi.Bitmap.Float32)
         d = {int(bmp.size()[0]): mi.TensorXf(bmp)}
         new_res = bmp.size()
         while np.min(new_res) > 4:

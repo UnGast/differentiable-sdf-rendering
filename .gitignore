@@ -14,6 +14,7 @@ outputs
 outputs_new
 outputs_old
 outputs*
+test_*/
 scenes/
 venv.bak/
 venv/

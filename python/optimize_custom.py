@@ -1,4 +1,5 @@
 import os
+import sys
 import mitsuba as mi
 
 from constants import OUTPUT_DIR, RENDER_DIR, SCENE_DIR
@@ -15,7 +16,7 @@ def optimize(config, opt_name, output_dir, ref_image_paths, ref_spp=1024,
     opt_config, mts_args = get_opt_config(opt_name, opt_config_args)
 
     # Pass scene name as part of the opt. config
-    opt_config.scene = 'dragon'
+    opt_config.scene = 'custom'
     #render_reference_images(opt_config, config, ref_spp=ref_spp, force=force, verbose=verbose, mts_args=mts_args)
     #ref_image_paths = copy_reference_images_to_output_dir(opt_config, config, current_output_dir)
 
@@ -36,7 +37,7 @@ def main():
                         help='Force use of LLVM (CPU) mode instead of CUDA/OptiX. This can be useful if compilation times using OptiX are too long.')
     parser.add_argument('--refspp', type=int, default=2048, help='Number of samples per pixel for reference images. Default: 2048')
     parser.add_argument('--verbose', action='store_true', help='Print additional log information')
-    args, uargs = parser.parse_known_args()
+    args, uargs = parser.parse_known_args(sys.argv[1:])
 
     use_llvm = args.llvm or not ('cuda_ad_rgb' in mi.variants())
     mi.set_variant('llvm_ad_rgb' if use_llvm else 'cuda_ad_rgb')
